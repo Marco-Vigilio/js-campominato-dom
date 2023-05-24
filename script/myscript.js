@@ -13,15 +13,15 @@
 
 /**
  * 
-Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
-Attenzione: nella stessa cella può essere posizionata al massimo una bomba, 
-perciò nell’array delle bombe non potranno esserci due numeri uguali.
-In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati 
-- abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. 
-Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
-La partita termina quando il giocatore clicca su una bomba 
-o quando raggiunge il numero massimo possibile di numeri consentiti 
-(ovvero quando ha rivelato tutte le celle che non sono bombe).
+ * * Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
+ * * Attenzione: nella stessa cella può essere posizionata al massimo una bomba, 
+ * * perciò nell’array delle bombe non potranno esserci due numeri uguali.
+ * In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati 
+ * - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. 
+ * Altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+ * La partita termina quando il giocatore clicca su una bomba 
+ * o quando raggiunge il numero massimo possibile di numeri consentiti 
+ * (ovvero quando ha rivelato tutte le celle che non sono bombe).
  * 
  */
 
@@ -40,12 +40,43 @@ function Game(){
 
     griglia.innerHTML = startGame;
 
-    let arraybombe = Bombs(3);
-    console.log(arraybombe);
-    console.log(arraybombe.length);
 
+    //let arraybombe = Bombs(3);
+    //console.log(arraybombe);
+    //console.log(arraybombe.length);
 
+    
     for(let i = 0; i < 100; i++){
+        //GENERO LE CELLE CON IL NUMERO
+        let numero = i+1;
+        let cella = CreateElement("div", "cella");
+        cella.append(numero);
+
+        
+        //SE CLICCO COLORA LE CELLE
+        cella.addEventListener("click", 
+        function(){
+
+            if(numero == arraybombe.find(isBomb)){ //-------------------------------------------------------------------
+
+            //COLORO TUTTE LE CELLE DI AZZURRO SE CLICCATE
+            let cellaAzzurra = CellColor(cella, "color-light-blue");
+            console.log(cellaAzzurra);
+            
+            }
+            else{
+                console.log("Se i numeri non sono uguali colorati di blu")
+            }
+            console.log("Hai cliccato il : " + cella.textContent);
+        });
+        
+
+        //INSERISCE LE CELLE NELLA DIV GRIGLIA
+        griglia.appendChild(cella);
+    }
+    
+    /*
+    for(let i = 0; i < arraybombe.length; i++){
         //GENERO LE CELLE CON IL NUMERO
         let numero = i+1;
         let cella = CreateElement("div", "cella");
@@ -53,26 +84,26 @@ function Game(){
 
         //FUNZIONE SE CLICCO COLORA LE CELLE DI ROSSO
 
-        
+        //let cellaRossa = CellColor(cella, "color-red");
 
-        /*
-        //FUNZIONE SE CLICCO COLORA LE CELLE DI AZZURRO
+
+        //FUNZIONE SE CLICCO COLORA LE CELLE
         cella.addEventListener("click", 
         function(){
+
+            
             //COLORO TUTTE LE CELLE DI AZZURRO SE CLICCATE
-            let cellaAzzurra = CellColor(cella, "color-light-blue");
-            console.log(cellaAzzurra);
-
-
-            console.log("Hai cliccato il : " + cella.textContent);
+            let cellaRossa = CellColor(cella, "color-red");
+            console.log(cellaRossa);
+            console.log("Hai cliccato il : " + cella.textContent + " è una bomba");
         });
-        */
+
 
         //INSERISCE LE CELLE NELLA DIV GRIGLIA
         griglia.appendChild(cella);
     }
     console.log();
-
+    */
 }
 
 
@@ -112,6 +143,25 @@ function NumberRandom(min, max){
     return number;
 }
 
+/*
+function getRandomUniqueNumber( minNum, maxNum, elements ){
+    const numbersList = [];
+
+    if ( (maxNum - minNum) < elements ){
+        return [];
+    }
+
+    while (numbersList.length < elements){
+        const newRandomNumber = getRandomInt(minNum, maxNum);
+        if (!numbersList.includes(newRandomNumber)){
+            numbersList.push(newRandomNumber);
+        }
+    }
+
+    return numbersList;
+}
+
+*/
 
 /**
  * 
@@ -121,9 +171,35 @@ function NumberRandom(min, max){
 function Bombs(numberBombs){
     let cellBomb = [];
 
-    for(let i = 0; i < numberBombs; i++){
+    while(cellBomb.length < numberBombs){
         let numRand = NumberRandom(1, 5);
-        cellBomb[i] = numRand;     
+        if(!cellBomb.includes(numRand)){
+            cellBomb.push(numRand);
+        }
     }
     return cellBomb;
 }
+
+
+//TROVA LE BOMBE NELLA MIA GRIGLIA
+let arraybombe = Bombs(3);
+console.log(arraybombe);
+
+
+  function isBomb(bomb) {
+    return bomb === 3;
+  } 
+  //console.log("La bomba sta nel : " + arraybombe.find(isBomb));
+
+
+
+  function TrovaBombe(cellbomb) {
+    let cell;
+    for(let i = 0; i < 100; i++){
+        cell = (i+1);
+    }
+    let bomba = cellbomb === cell;
+    return bomba;
+  }
+  
+  //console.log(arraybombe.find(TrovaBombe()));
