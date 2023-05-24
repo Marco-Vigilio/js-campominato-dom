@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Cabin', sans-serif;
+    font-weight: bold;
+}
+
+header , footer{
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+main{
+    background-color: #7fffd4;
+    height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding: .5rem;
+    height: 100%;
+}
+
+img{
+    width: 100%;
+}
+
+input{
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+/*Gliglia*/
+
+.griglia{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.griglia_lv_one{
+    max-width: 500px;
+}
+
+.cella{
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.colorato{
+    background-color: rgb(77, 151, 243);
+}
