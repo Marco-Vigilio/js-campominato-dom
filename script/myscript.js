@@ -55,7 +55,17 @@ function Game(){
         
         griglia.appendChild(cella);
     }
+    console.log();
+    /*
+    for(let i = 0; i < 5; i++){
+    console.log(NumberRandom(1, 100));
+    }
+    */
+
+    console.log(  Bombs(5) );
 }
+
+
 
 function CreateElement(tagName, className){
     let elemento = document.createElement(tagName);
@@ -66,4 +76,18 @@ function CreateElement(tagName, className){
 function CellColorBlue(cell){
     let cellaColorata = cell.classList.toggle("colorato");
     return cellaColorata;
+}
+
+function NumberRandom(min, max){
+    let number = Math.floor((Math.random()*max) + min);
+    return number;
+}
+
+function Bombs(numberBombs){
+    let cellBomb = [];
+    for(let i = 0; i < numberBombs; i++){
+        cellBomb[i] = NumberRandom(1, 100);
+         
+    }
+    return cellBomb;
 }
