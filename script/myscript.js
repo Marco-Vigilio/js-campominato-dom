@@ -66,23 +66,47 @@ function Game(){
 }
 
 
-
+/**
+ * 
+ * @param {*} tagName inserisci in tag che vuoi creare
+ * @param {*} className inserisci la classe che vuoi aggiungere al tuo tag
+ * @returns elemento tag con classe aggiunta
+ */
 function CreateElement(tagName, className){
     let elemento = document.createElement(tagName);
     elemento.classList.add(className);
     return elemento;
 }
 
+
+/**
+ * 
+ * @param {*} cell inserire le celle che vuoi colorare di celeste assegnando la classe "coloraro" (si aggiunge e si toglie se c'è gia)
+ * @returns ritorna una cella colorata
+ */
 function CellColorBlue(cell){
     let cellaColorata = cell.classList.toggle("colorato");
     return cellaColorata;
 }
 
+
+/**
+ * 
+ * @param {*} min numero minimo da inserire
+ * @param {*} max numero massimo da inserire
+ * @returns ritorna un numero randomico tra il minimo e il massimo
+ */
 function NumberRandom(min, max){
     let number = Math.floor((Math.random()*max) + min);
     return number;
 }
 
+
+/**
+ * 
+ * @param {*} numberBombs inserire numero di bombe che vuoi generare
+ * @returns ritorna un array con numeri generati casualmente tra 1 e 100 con grandezza del numero di bombe chiesto prima
+ */
 function Bombs(numberBombs){
     let cellBomb = [];
     for(let i = 0; i < numberBombs; i++){
