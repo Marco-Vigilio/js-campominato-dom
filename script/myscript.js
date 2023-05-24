@@ -57,17 +57,19 @@ function Game(){
         cella.addEventListener("click", 
         function(){
 
-            if(numero == arraybombe.find(isBomb)){ //-------------------------------------------------------------------
-
-            //COLORO TUTTE LE CELLE DI AZZURRO SE CLICCATE
-            let cellaAzzurra = CellColor(cella, "color-light-blue");
-            console.log(cellaAzzurra);
-            
+            if(numero == arraybombe.find(isBomb)){
+                //COLORO SOLO QUELLE PRESENTI NEL MIO ARRAY BOMBE DI ROSSO
+                let cellaRossa = CellColor(cella, "color-red");
+                console.log(cellaRossa);
+                console.log("Hai cliccato il : " + cella.textContent + " è una bomba");
             }
             else{
-                console.log("Se i numeri non sono uguali colorati di blu")
+                //COLORO TUTTE LE CELLE DI AZZURRO SE CLICCATE
+                let cellaAzzurra = CellColor(cella, "color-light-blue");
+                console.log(cellaAzzurra);
+                console.log("Hai cliccato il : " + cella.textContent);
             }
-            console.log("Hai cliccato il : " + cella.textContent);
+            
         });
         
 
