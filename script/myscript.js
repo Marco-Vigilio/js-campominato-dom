@@ -40,6 +40,9 @@ function Game(){
 
     griglia.innerHTML = startGame;
 
+    console.log(  Bombs(5) );
+
+    let arraybombe = Bombs(5);
 
     for(let i = 0; i < 100; i++){
         let numero = i+1;
@@ -49,20 +52,16 @@ function Game(){
         cella.addEventListener("click", 
         function(){
 
-            let cellaColorata = CellColorBlue(cella);
+            let cellaAzzurra = CellColor(cella, "color-light-blue");
+            console.log(cellaAzzurra);
+
             console.log("Hai cliccato il : " + cella.textContent);
         });
         
         griglia.appendChild(cella);
     }
     console.log();
-    /*
-    for(let i = 0; i < 5; i++){
-    console.log(NumberRandom(1, 100));
-    }
-    */
 
-    console.log(  Bombs(5) );
 }
 
 
@@ -81,11 +80,12 @@ function CreateElement(tagName, className){
 
 /**
  * 
- * @param {*} cell inserire le celle che vuoi colorare di celeste assegnando la classe "coloraro" (si aggiunge e si toglie se c'è gia)
- * @returns ritorna una cella colorata
+ * @param {*} cell inserisci quale cella vuoi colorare
+ * @param {*} className inserire la classe colorata che vuoi che la tua cella abbia
+ * @returns 
  */
-function CellColorBlue(cell){
-    let cellaColorata = cell.classList.toggle("colorato");
+function CellColor(cell, className){
+    let cellaColorata = cell.classList.toggle(className);
     return cellaColorata;
 }
 
