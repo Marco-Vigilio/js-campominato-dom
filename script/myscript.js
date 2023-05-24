@@ -40,24 +40,35 @@ function Game(){
 
     griglia.innerHTML = startGame;
 
-    console.log(  Bombs(5) );
+    let arraybombe = Bombs(3);
+    console.log(arraybombe);
+    console.log(arraybombe.length);
 
-    let arraybombe = Bombs(5);
 
     for(let i = 0; i < 100; i++){
+        //GENERO LE CELLE CON IL NUMERO
         let numero = i+1;
         let cella = CreateElement("div", "cella");
         cella.append(numero);
 
+        //FUNZIONE SE CLICCO COLORA LE CELLE DI ROSSO
+
+        
+
+        /*
+        //FUNZIONE SE CLICCO COLORA LE CELLE DI AZZURRO
         cella.addEventListener("click", 
         function(){
-
+            //COLORO TUTTE LE CELLE DI AZZURRO SE CLICCATE
             let cellaAzzurra = CellColor(cella, "color-light-blue");
             console.log(cellaAzzurra);
 
+
             console.log("Hai cliccato il : " + cella.textContent);
         });
-        
+        */
+
+        //INSERISCE LE CELLE NELLA DIV GRIGLIA
         griglia.appendChild(cella);
     }
     console.log();
@@ -109,9 +120,10 @@ function NumberRandom(min, max){
  */
 function Bombs(numberBombs){
     let cellBomb = [];
+
     for(let i = 0; i < numberBombs; i++){
-        cellBomb[i] = NumberRandom(1, 100);
-         
+        let numRand = NumberRandom(1, 5);
+        cellBomb[i] = numRand;     
     }
     return cellBomb;
 }
